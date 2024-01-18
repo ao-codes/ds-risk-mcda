@@ -1,0 +1,51 @@
+define: 
+  - &pcm_base_level_name "Root Level"
+  - &pcm_sheet_prefix "PCM"
+  - &input_data_prefix "OriginalData"
+
+ahp_output_xlsx:
+  sheet_name_categories: "Level_0"
+  sheet_name_level_1: "Level_1"
+  sheet_name_level_2: "Level_2"
+  fill_color: "b4b4b4"
+  input_data_prefix: *input_data_prefix
+
+ahp_topsis_output_xlsx: 
+  pcm_sheet_prefix: *pcm_sheet_prefix
+  base_level_name: *pcm_base_level_name
+  sheet_name_topsis: "TOPSIS_decision_matrix"
+  fill_color: "b4b4b4"
+  input_data_prefix: *input_data_prefix
+
+ahp_analyzer:
+  risk_column: "Risk"
+  category_column: "Category"
+  local_weight_column: "LocalRiskWeight"
+  category_weight_column: "CategoryWeight"
+  global_weight_col: "GlobalRiskWeight"
+  add_weight_col: "AdditionalWeight"
+  consistency_df_col_1: "PCM"
+  consistency_df_col_2: "Consistency (CR)"
+  consistency_df_cat_pcm_name: *pcm_base_level_name
+
+simulators:
+  sim_mode_saaty: "saaty_scale"
+  sim_mode_simple: "simple_comparison"
+
+ahp_topsis_simulator:
+  col_risk: "Risk"
+  col_risk_weight: "RiskWeight"
+  ahp_base_level_name: *pcm_base_level_name 
+
+ahp_topsis_analyzer:
+  col_risk: "Risk"
+  col_result: "TOPSIS-Score"
+  col_rank: "Rank"
+  col_crit: "Criterion"
+  col_crit_weight: "LocalWeight"
+  col_global_weight: "GlobalWeight"
+  ahp_base_level_name: *pcm_base_level_name 
+
+analyzer:
+  decimals: 3
+  decimal_format: "{:,.3f}"

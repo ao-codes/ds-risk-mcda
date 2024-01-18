@@ -1,0 +1,4 @@
+include README.md
+include src/__init__.py
+include src/tests/*.py
+include src/tests/excel_test_files/*.xlsx
