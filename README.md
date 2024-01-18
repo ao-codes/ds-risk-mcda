@@ -12,22 +12,24 @@ or risk analysts, and can then read the filled Excel files back in to carry out 
 analyses. In addition, ds-risk-mcda has rudimentary options for simulating risk analyzes using the
 methods mentioned.
 
+
 Installation
 ------------
 ds-risk-mcda is not yet available on the Python Package Index (PyPI). To install follow these steps:
 
 1. download or clone this repo
-2. build a python-wheel by
+2. build a python-wheel
 ```
 python setup.py bdist_wheel
 ```
-3. install wheel with
+3. install wheel for your virtual environment
 ```
 pip install /path/to/ds_risk_mcda-1.0.0-py3-none-any.whl
 ```
 
-Usage
------
+
+Example usage
+-------------
 ```py3
 print("hello world")
 ```
@@ -35,7 +37,9 @@ print("hello world")
 
 running unit-tests
 ------------------
-1. Please unpack source distribution "ds-risk-mcda-1.0.0.tar.gz".
-2. Create a virtual environment in the folder of the unpacked distribution.
-3. Install the packages "pyDecision", "openpyxl", "pyyaml", "pytest"
-4. execute command: pytest -v
+1. If not already done, create a virtual environment in the folder of the unpacked distribution.
+2. Install the required packages.
+```
+pip install pyDecision openpyxl pyyaml pytest
+```
+3. Execute command pytest -v
