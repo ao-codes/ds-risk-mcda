@@ -30,12 +30,43 @@ pip install /path/to/ds_risk_mcda-1.0.0-py3-none-any.whl
 
 Example usage
 -------------
+#### 1. Generate an AHP-assessment template (xlsx-file)
+
 ```py3
-print("hello world")
+from ds_risk_mcda.assessments import AHPAssessment
+
+# providing initial data from a risk breakdown structure (RBS)
+# input may also be a pandas dataframe
+RBS_data = {
+    "Risks": ["R-01", "R-02", "R-03", "R-04", "R-05"],
+    "Categories": ["C-01", "C-01", "C-02", "C-02", "C-02"],
+}
+
+# instantiating an AHPAssessment and preparing an assessment file
+assessment = AHPAssessment(RBS_data)
+assessment.prepare_excel_assessment("test.xlsx")
+```
+#### 2. Fill out the pairwise comparison matrices in the template.
+#### 3. Execute risk analyses
+```py3
+from ds_risk_mcda.assessments import AHPAssessment
+from ds_risk_mcda.analyzers import AHPAnalyzer
+
+# read template data
+pcm_level_1, pcms_level_2, _ = AHPAssessment.read_excel_assessment("test.xlsx")
+
+# instantiate analyzer and perform risk analysis
+analyzer = AHPAnalyzer(pcm_level_1, pcms_level_2)
+risk_analysis, consistencies, _ = analyzer.perform_analysis(verbose=True)
+
+# show results
+print(risk_analysis)
+print(consistencies)
+
 ```
 
 
-running unit-tests
+Running unit-tests
 ------------------
 1. If not already done, create a virtual environment in the folder of the unpacked distribution.
 2. Install the required packages.
